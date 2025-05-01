@@ -1,0 +1,16 @@
+{
+  "country": "USA",
+  "language": "English",
+  "type": "Testing",
+  "course1": "AQA Java",
+  "course2": "AQA Python",
+  "searchResult": "Unfortunately, we did not find any courses matching your chosen criteria.",
+  "dragAndDropResult": "Congratulations! Let's test for the best!",
+  "alertConfirm": "You have called alert!",
+  "resultConfirm": "Congratulations, you have successfully enrolled in the course!",
+  "alertGetDiscount": "Are you sure you want to apply the discount?",
+  "resultGetDiscount": "You received a 10% discount on the second course.",
+  "alertCancelCourse": "Here you may describe a reason why you are cancelling your registration (or leave this field empty).",
+  "resultCancelCourse": "Your course application has been cancelled. Reason: ",
+  "textToAlertCancelCourse": "Test"
+}

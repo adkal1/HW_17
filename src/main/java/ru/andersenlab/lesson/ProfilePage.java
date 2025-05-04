@@ -1,30 +1,34 @@
 package ru.andersenlab.lesson;
 
 import org.openqa.selenium.By;
+import ru.andersenlab.lesson.baseclasses.BaseForm;
+import ru.andersenlab.lesson.elements.Button;
 
-import static ru.andersenlab.lesson.utilits.WaitUtils.*;
+public class ProfilePage extends BaseForm {
+    private final Button aqaPracticeBtn = new Button(By.xpath("//div[text()='AQA Practice']"));
 
-public class ProfilePage {
-    private static final By aqaPracticeBtn = By.xpath("//div[text()='AQA Practice']");
+    public ProfilePage() {
+        super(By.xpath("//div[contains(text(), 'Sign Out')]"));
+    }
 
 
     public void clickAqaPracticeBtn() {
-        waitForClickable(aqaPracticeBtn).click();
+        aqaPracticeBtn.click();
     }
 
     public void clickDragDropBtn() {
-        final By dragDropBtn = By.xpath("//div[text()='Drag & Drop']");
-        waitForClickable(dragDropBtn).click();
+        final Button dragDropBtn = new Button(By.xpath("//div[text()='Drag & Drop']"));
+        dragDropBtn.click();
     }
 
     public void clickSelectBtn() {
-        final By selectBtn = By.xpath("//div[text()='Select']");
-        waitForClickable(selectBtn).click();
+        final Button selectBtn = new Button(By.xpath("//div[text()='Select']"));
+        selectBtn.click();
     }
 
     public void clickAlertsAndIframesBtn() {
-        final By selectBtn = By.xpath("//div[text()='Actions, Alerts & Iframes']");
-        waitForClickable(selectBtn).click();
+        final Button selectBtn = new Button(By.xpath("//div[text()='Actions, Alerts & Iframes']"));
+        selectBtn.click();
     }
 
 }

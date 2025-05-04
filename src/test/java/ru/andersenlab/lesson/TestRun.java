@@ -13,7 +13,9 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import static ru.andersenlab.lesson.utilits.Driver.getDriver;
-import static ru.andersenlab.lesson.utilits.DateUtils.*;
+import static ru.andersenlab.lesson.utilits.DateUtils.getDateInTwoWeeks;
+import static ru.andersenlab.lesson.utilits.DateUtils.getNextMonday;
+import static ru.andersenlab.lesson.utilits.Driver.quitDriver;
 
 
 public class TestRun {
@@ -33,7 +35,7 @@ public class TestRun {
     }
 
     @Test
-    public void scenario1() {
+    public void testSelectPage() {
         SignInPage signInPage = new SignInPage();
         signInPage.setEmailField(config.email);
         signInPage.setPasswordField(config.password);
@@ -53,11 +55,12 @@ public class TestRun {
         selectPage.clickSearchBtn();
 
         SearchResult searchResult = new SearchResult();
+        Assert.assertTrue(searchResult.isFormOpen());
         Assert.assertEquals(searchResult.getResultText(), testDatas.searchResult);
     }
 
     @Test
-    public void scenario2() {
+    public void testDragAndDropPage() {
         SignInPage signInPage = new SignInPage();
         signInPage.setEmailField(config.email);
         signInPage.setPasswordField(config.password);
@@ -76,7 +79,7 @@ public class TestRun {
     }
 
     @Test
-    public void scenario3() {
+    public void testAlertsAndIframesPage() {
         SoftAssert softAssert = new SoftAssert();
         SignInPage signInPage = new SignInPage();
         signInPage.setEmailField(config.email);
@@ -116,7 +119,7 @@ public class TestRun {
 
     @AfterMethod
     public void tearDown() {
-        getDriver().quit();
+        quitDriver();
     }
 
 }

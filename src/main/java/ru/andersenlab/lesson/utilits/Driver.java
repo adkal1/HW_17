@@ -15,5 +15,11 @@ public class Driver {
         }
         return driver;
     }
+    public static void quitDriver() {
+        if (driver != null) {
+            driver.quit();
+            driver = null;
+        }
+    }
 
 }

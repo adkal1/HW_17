@@ -1,50 +1,50 @@
 package ru.andersenlab.lesson;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.Select;
+import ru.andersenlab.lesson.baseclasses.BaseForm;
+import ru.andersenlab.lesson.elements.Button;
+import ru.andersenlab.lesson.elements.Dropdown;
+import ru.andersenlab.lesson.elements.TextBox;
 
-import static ru.andersenlab.lesson.utilits.Driver.getDriver;
-import static ru.andersenlab.lesson.utilits.WaitUtils.*;
+public class SelectPage extends BaseForm {
+    private final Dropdown countryDropdown = new Dropdown(By.xpath("//select[@title='Select country']"));
+    private final Dropdown languageDropdown = new Dropdown(By.xpath("//select[@title='Select language']"));
+    private final Dropdown typeDropdown = new Dropdown(By.xpath("//select[@title='Select type']"));
+    private final TextBox startCalendar = new TextBox(By.xpath("//input[@title='Start date']"));
+    private final TextBox endCalendar = new TextBox(By.xpath("//input[@title='End date']"));
+    private final Dropdown selectCourses = new Dropdown(By.xpath("//select[@id='MultipleSelect']"));
+    private final Button searchBtn = new Button(By.xpath("//button[@type='submit']"));
 
-public class SelectPage {
-    private static final By countryDropdown = By.xpath("//select[@title='Select country']");
-    private static final By languageDropdown = By.xpath("//select[@title='Select language']");
-    private static final By typeDropdown = By.xpath("//select[@title='Select type']");
-    private static final By startCalendar = By.xpath("//input[@title='Start date']");
-    private static final By endCalendar = By.xpath("//input[@title='End date']");
-    private static final By selectCourses = By.xpath("//select[@id='MultipleSelect']");
-    private static final By searchBtn = By.xpath("//button[@type='submit']");
+    public SelectPage() {
+        super(By.xpath("//button[@name='SelectPageSearchButton']"));
+    }
 
     public void setCountryDropdown(String country) {
-        Select select = new Select(getDriver().findElement(countryDropdown));
-        select.selectByVisibleText(country);
+        countryDropdown.setDropdown(country);
     }
 
     public void setLanguageDropdown(String language) {
-        Select select = new Select(getDriver().findElement(languageDropdown));
-        select.selectByVisibleText(language);
+        languageDropdown.setDropdown(language);
     }
 
     public void setTypeDropdown(String type) {
-        Select select = new Select(getDriver().findElement(typeDropdown));
-        select.selectByVisibleText(type);
+        typeDropdown.setDropdown(type);
     }
 
     public void setStartCalendar(String startDate) {
-        waitForVisibility(startCalendar).sendKeys(startDate);
+        startCalendar.setText(startDate);
     }
 
     public void setEndCalendar(String endDate) {
-        waitForVisibility(endCalendar).sendKeys(endDate);
+        endCalendar.setText(endDate);
     }
 
     public void setSelectCourses(String course1, String course2) {
-        Select select = new Select(waitForVisibility(selectCourses));
-        select.selectByVisibleText(course1);
-        select.selectByVisibleText(course2);
+        selectCourses.setDropdown(course1);
+        selectCourses.setDropdown(course2);
     }
 
     public void clickSearchBtn() {
-        waitForClickable(searchBtn).click();
+        searchBtn.click();
     }
 }

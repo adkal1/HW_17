@@ -12,5 +12,13 @@
   "resultGetDiscount": "You received a 10% discount on the second course.",
   "alertCancelCourse": "Here you may describe a reason why you are cancelling your registration (or leave this field empty).",
   "resultCancelCourse": "Your course application has been cancelled. Reason: ",
-  "textToAlertCancelCourse": "Test"
+  "textToAlertCancelCourse": "Test",
+  "title": "QA Course",
+  "passwordLessEight": "Minimum 8 characters",
+  "emailInvalid": "Invaid email address",
+  "firstName": "John",
+  "lastName": "Klasq",
+  "dateOfBirth": "11.12.1999",
+  "email": "johnq@mail121.io",
+  "password": "12345678"
 }

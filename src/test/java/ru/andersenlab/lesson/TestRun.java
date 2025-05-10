@@ -1,6 +1,7 @@
 package ru.andersenlab.lesson;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.qameta.allure.*;
 import org.openqa.selenium.Alert;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -35,6 +36,11 @@ public class TestRun {
         getDriver().manage().timeouts().implicitlyWait(1000, TimeUnit.MILLISECONDS);
     }
 
+    @Epic("AndersenLab")
+    @Story("Course selection functionality")
+    @Description("Verifies the correct operation of the course selection page using dropdowns and calendars")
+    @Severity(SeverityLevel.CRITICAL)
+    @TmsLink("TMS-001")
     @Test
     public void testSelectPage() {
         signInPage.setEmailField(config.email);
@@ -58,7 +64,11 @@ public class TestRun {
         Assert.assertTrue(searchResult.isFormOpen());
         Assert.assertEquals(searchResult.getResultText(), testDatas.searchResult);
     }
-
+    @Epic("AndersenLab")
+    @Story("Drag-and-Drop functionality")
+    @Description("Checks drag-and-drop functionality both manual and automatic")
+    @Severity(SeverityLevel.NORMAL)
+    @TmsLink("TMS-002")
     @Test
     public void testDragAndDropPage() {
         signInPage.setEmailField(config.email);
@@ -77,6 +87,11 @@ public class TestRun {
         Assert.assertEquals(dragAndDropPage.getResultLabel(), testDatas.dragAndDropResult);
     }
 
+    @Epic("AQA Training")
+    @Story("Alerts and Iframes interaction")
+    @Description("Validates handling of alert pop-ups within an iframe: confirmation, discount request, course cancellation")
+    @Severity(SeverityLevel.CRITICAL)
+    @TmsLink("TMS-003")
     @Test
     public void testAlertsAndIframesPage() {
         SoftAssert softAssert = new SoftAssert();
@@ -115,11 +130,21 @@ public class TestRun {
         softAssert.assertAll();
     }
 
+    @Epic("AQA Training")
+    @Story("Sign-in page UI")
+    @Description("Verifies title and header on the sign-in page")
+    @Severity(SeverityLevel.MINOR)
+    @TmsLink("TMS-004")
     @Test
     public void verifySignInPageTitleAndHeader() {
         Assert.assertEquals(getDriver().getTitle(), testDatas.title);
     }
 
+    @Epic("AQA Training")
+    @Story("Sign-in form validation")
+    @Description("Checks presence of email and password fields on the login page")
+    @Severity(SeverityLevel.NORMAL)
+    @TmsLink("TMS-005")
     @Test
     public void checkEmailAndPasswordFieldsInSignInPage() {
         SoftAssert softAssert = new SoftAssert();
@@ -128,16 +153,31 @@ public class TestRun {
         softAssert.assertAll();
     }
 
+    @Epic("AQA Training")
+    @Story("Password validation")
+    @Description("Checks error when password is shorter than 8 characters")
+    @Severity(SeverityLevel.NORMAL)
+    @TmsLink("TMS-006")
     @Test
     public void checkPasswordLessThanEightCharacters() {
         Assert.assertEquals(signInPage.getPasswordLabelError(), testDatas.passwordLessEight);
     }
 
+    @Epic("AQA Training")
+    @Story("Email validation")
+    @Description("Checks error message for invalid email format")
+    @Severity(SeverityLevel.NORMAL)
+    @TmsLink("TMS-007")
     @Test
     public void checkInvalidEmailFormat() {
         Assert.assertEquals(signInPage.getEmailLabelError(), testDatas.emailInvalid);
     }
 
+    @Epic("AQA Training")
+    @Story("User registration")
+    @Description("Successfully registers a user with valid data")
+    @Severity(SeverityLevel.CRITICAL)
+    @TmsLink("TMS-008")
     @Test
     public void registerSuccessfullyWithValidData() {
         signInPage.clickRegisterBtn();
@@ -153,6 +193,11 @@ public class TestRun {
         Assert.assertTrue(signInPage.isFormOpen());
     }
 
+    @Epic("AQA Training")
+    @Story("User registration")
+    @Description("Attempts to register with an already registered email")
+    @Severity(SeverityLevel.NORMAL)
+    @TmsLink("TMS-009")
     @Test
     public void registerWithAlreadyRegisteredEmail() {
         signInPage.clickRegisterBtn();
@@ -168,6 +213,11 @@ public class TestRun {
         Assert.assertFalse(signInPage.isFormOpen());
     }
 
+    @Epic("AQA Training")
+    @Story("User registration")
+    @Description("Validates required input fields on registration page")
+    @Severity(SeverityLevel.NORMAL)
+    @TmsLink("TMS-010")
     @Test
     public void validateRegisterPageInputFields() {
         signInPage.clickRegisterBtn();
@@ -182,6 +232,11 @@ public class TestRun {
         Assert.assertEquals(registerPage.getErrorEmailField(), "Required");
     }
 
+    @Epic("AQA Training")
+    @Story("User login")
+    @Description("Successfully logs in with valid credentials")
+    @Severity(SeverityLevel.CRITICAL)
+    @TmsLink("TMS-011")
     @Test
     public void loginSuccessfullyWithValidCredentials() {
         signInPage.setEmailField(config.email);
@@ -191,6 +246,11 @@ public class TestRun {
         Assert.assertTrue(profilePage.isFormOpen());
     }
 
+    @Epic("AQA Training")
+    @Story("User login")
+    @Description("Fails login with incorrect credentials")
+    @Severity(SeverityLevel.NORMAL)
+    @TmsLink("TMS-012")
     @Test
     public void failLoginWithIncorrectCredentials() {
         signInPage.setEmailField(config.email);
@@ -200,6 +260,11 @@ public class TestRun {
         Assert.assertFalse(profilePage.isFormOpen());
     }
 
+    @Epic("AQA Training")
+    @Story("User login")
+    @Description("Validates that login fields cannot be empty")
+    @Severity(SeverityLevel.NORMAL)
+    @TmsLink("TMS-013")
     @Test
     public void validateLoginPageInputFields() {
         signInPage.setEmailField(" ");
@@ -211,7 +276,7 @@ public class TestRun {
 
     @AfterMethod
     public void tearDown() {
-        quitDriver();
+        getDriver().quit();
     }
 
 }

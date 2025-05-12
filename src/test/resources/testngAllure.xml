@@ -2,7 +2,11 @@
 <suite name="AllTests Suite">
     <test name="AllTests">
         <classes>
-            <class name="ru.andersenlab.lesson.TestRun"/>
+            <class name="ru.andersenlab.lesson.AlertsAndIframesPageTest"/>
+            <class name="ru.andersenlab.lesson.DragAndDropPageTest"/>
+            <class name="ru.andersenlab.lesson.RegistrationPageTest"/>
+            <class name="ru.andersenlab.lesson.SelectPageTest"/>
+            <class name="ru.andersenlab.lesson.SignInPageTest"/>
         </classes>
     </test>
 </suite>

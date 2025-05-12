@@ -1,6 +1,5 @@
 package ru.andersenlab.lesson.utilits;
 
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import ru.andersenlab.lesson.elements.Label;
 

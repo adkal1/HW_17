@@ -23,26 +23,33 @@ public class RegisterPage extends BaseForm {
     public void setFirstNameField(String firstName) {
         firstNameField.setText(firstName);
     }
+
     public void setLastNameBoxField(String lastName) {
         lastNameField.setText(lastName);
     }
+
     public void setDateOfBirthField(String dateOfBirth) {
         dateOfBirthField.setText(dateOfBirth);
     }
+
     public void setEmailField(String email) {
         emailField.setText(email);
     }
+
     public void setPasswordField(String password) {
         passwordField.setText(password);
     }
-    public void setPasswordConfirmationField(String password){
+
+    public void setPasswordConfirmationField(String password) {
         passwordConfirmationField.setText(password);
     }
-    public void clickSubmitBtn(){
+
+    public void clickSubmitBtn() {
         submitBtn.click();
     }
-    public String getErrorEmailField(){
-        final Label errorEmailField= new Label(By.xpath("//input[@name='email']/../../div/span"));
+
+    public String getErrorEmailField() {
+        final Label errorEmailField = new Label(By.xpath("//input[@name='email']/../../div/span"));
         return errorEmailField.getText();
     }
 }

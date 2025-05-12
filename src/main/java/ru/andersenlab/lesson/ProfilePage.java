@@ -11,7 +11,6 @@ public class ProfilePage extends BaseForm {
         super(By.xpath("//div[contains(text(), 'Sign Out')]"));
     }
 
-
     public void clickAqaPracticeBtn() {
         aqaPracticeBtn.click();
     }

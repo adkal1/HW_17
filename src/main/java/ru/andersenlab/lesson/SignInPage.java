@@ -32,19 +32,24 @@ public class SignInPage extends BaseForm {
     public void clickSubmitBtn() {
         submitBtn.click();
     }
-    public boolean isPasswordFieldPresent(){
+
+    public boolean isPasswordFieldPresent() {
         return passwordField.isElementPresent();
     }
+
     public boolean isEmailFieldPresent() {
         return emailField.isElementPresent();
     }
-    public String getEmailLabelError(){
+
+    public String getEmailLabelError() {
         return emailErrorLabel.getText();
     }
+
     public String getPasswordLabelError() {
         return passwordErrorLabel.getText();
     }
-    public void clickRegisterBtn(){
+
+    public void clickRegisterBtn() {
         registerBtn.click();
     }
 

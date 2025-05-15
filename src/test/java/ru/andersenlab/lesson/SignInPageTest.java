@@ -1,11 +1,14 @@
 package ru.andersenlab.lesson;
 
-import io.qameta.allure.*;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Severity;
+import io.qameta.allure.Story;
+import io.qameta.allure.TmsLink;
+import io.qameta.allure.SeverityLevel;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-
-import static ru.andersenlab.lesson.utilits.Driver.getDriver;
 
 public class SignInPageTest extends BaseTest {
 
@@ -16,7 +19,7 @@ public class SignInPageTest extends BaseTest {
     @TmsLink("TMS-004")
     @Test
     public void verifySignInPageTitleAndHeader() {
-        Assert.assertEquals(getDriver().getTitle(), testDatas.title);
+        Assert.assertEquals(signInPage.getTitlePage(), testDatas.title);
     }
 
     @Epic("AQA Training")
@@ -39,7 +42,9 @@ public class SignInPageTest extends BaseTest {
     @TmsLink("TMS-006")
     @Test
     public void checkPasswordLessThanEightCharacters() {
-        Assert.assertEquals(signInPage.getPasswordLabelError(), testDatas.passwordLessEight);
+        signInPage.setPasswordField(" ");
+        signInPage.setEmailField(config.password);
+        Assert.assertTrue(signInPage.isPasswordLabelEightCharError());
     }
 
     @Epic("AQA Training")
@@ -49,7 +54,9 @@ public class SignInPageTest extends BaseTest {
     @TmsLink("TMS-007")
     @Test
     public void checkInvalidEmailFormat() {
-        Assert.assertEquals(signInPage.getEmailLabelError(), testDatas.emailInvalid);
+        signInPage.setEmailField(" ");
+        signInPage.setPasswordField(config.password);
+        Assert.assertTrue(signInPage.isEmailLabelError());
     }
 
     @Epic("AQA Training")
@@ -76,8 +83,7 @@ public class SignInPageTest extends BaseTest {
         signInPage.setEmailField(config.email);
         signInPage.setPasswordField(config.password + "1");
         signInPage.clickSubmitBtn();
-        ProfilePage profilePage = new ProfilePage();
-        Assert.assertFalse(profilePage.isFormOpen());
+        Assert.assertTrue(signInPage.isEmailOrPasswordIsNotValid());
     }
 
     @Epic("AQA Training")
@@ -89,9 +95,7 @@ public class SignInPageTest extends BaseTest {
     public void validateLoginPageInputFields() {
         signInPage.setEmailField(" ");
         signInPage.setPasswordField(" ");
-        signInPage.clickSubmitBtn();
-        ProfilePage profilePage = new ProfilePage();
-        Assert.assertFalse(profilePage.isFormOpen());
+        Assert.assertTrue(signInPage.isEmailLabelError());
     }
 
 }

@@ -1,6 +1,11 @@
 package ru.andersenlab.lesson;
 
-import io.qameta.allure.*;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Severity;
+import io.qameta.allure.Story;
+import io.qameta.allure.TmsLink;
+import io.qameta.allure.SeverityLevel;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -38,11 +43,12 @@ public class RegistrationPageTest extends BaseTest {
         registerPage.setFirstNameField(testDatas.firstName);
         registerPage.setLastNameBoxField(testDatas.lastName);
         registerPage.setDateOfBirthField(testDatas.dateOfBirth);
+
         registerPage.setEmailField(testDatas.email);
         registerPage.setPasswordField(testDatas.password);
         registerPage.setPasswordConfirmationField(testDatas.password);
         registerPage.clickSubmitBtn();
-        Assert.assertFalse(signInPage.isFormOpen());
+        Assert.assertTrue(registerPage.isFormOpen());
     }
 
     @Epic("AQA Training")
@@ -57,6 +63,7 @@ public class RegistrationPageTest extends BaseTest {
         RegisterPage registerPage = new RegisterPage();
         registerPage.setFirstNameField(testDatas.firstName);
         registerPage.setLastNameBoxField(testDatas.lastName);
+        registerPage.setEmailField("");
         registerPage.setDateOfBirthField(testDatas.dateOfBirth);
         registerPage.setPasswordField(testDatas.password);
         registerPage.setPasswordConfirmationField(testDatas.password);

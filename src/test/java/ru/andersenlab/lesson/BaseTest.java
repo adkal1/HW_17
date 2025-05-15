@@ -1,6 +1,7 @@
 package ru.andersenlab.lesson;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
@@ -20,8 +21,9 @@ public abstract class BaseTest {
         ObjectMapper mapper = new ObjectMapper();
         config = mapper.readValue(new File("src/test/resources/config.json"), Config.class);
         testDatas = mapper.readValue(new File("src/test/resources/testDatas.json"), TestDatas.class);
-        getDriver().manage().window().maximize();
-        getDriver().get(config.url);
+        WebDriver driver = getDriver();
+        driver.manage().window().maximize();
+        driver.get(config.url);
         signInPage = new SignInPage();
     }
 

@@ -14,9 +14,10 @@ public class SelectPage extends BaseForm {
     private final TextBox endCalendar = new TextBox(By.xpath("//input[@title='End date']"));
     private final Dropdown selectCourses = new Dropdown(By.xpath("//select[@id='MultipleSelect']"));
     private final Button searchBtn = new Button(By.xpath("//button[@type='submit']"));
+    private final Button backToProfileBtn = new Button(By.xpath("//a[@data-test-id='NavLinkToHome']"));
 
     public SelectPage() {
-        super(By.xpath("//button[@name='SelectPageSearchButton']"));
+        super(By.id("MultipleSelect"));
     }
 
     public void setCountryDropdown(String country) {
@@ -46,5 +47,9 @@ public class SelectPage extends BaseForm {
 
     public void clickSearchBtn() {
         searchBtn.click();
+    }
+
+    public void clickBackToProfileBtn() {
+        backToProfileBtn.click();
     }
 }

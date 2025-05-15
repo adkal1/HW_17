@@ -11,8 +11,7 @@ public class SignInPage extends BaseForm {
     private final TextBox passwordField = new TextBox(By.xpath("//input[@name='password']"));
     private final Button submitBtn = new Button(By.xpath("//button[@type='submit']"));
     private final TextBox emailField = new TextBox(By.xpath("//input[@name='email']"));
-    private final Label emailErrorLabel = new Label(By.xpath("//input[@name='email']/../../div/span"));
-    private final Label passwordErrorLabel = new Label(By.xpath("//input[@name='password']/../../div/span"));
+
     private final Button registerBtn = new Button(By.xpath("//a[@data-login-link='LoginPageLink']"));
 
     public SignInPage() {
@@ -41,16 +40,23 @@ public class SignInPage extends BaseForm {
         return emailField.isElementPresent();
     }
 
-    public String getEmailLabelError() {
-        return emailErrorLabel.getText();
+    public boolean isEmailLabelError() {
+        final Label emailErrorLabel = new Label(By.xpath("//span[text()='Invalid email address']"));
+        return emailErrorLabel.isElementPresent();
     }
 
-    public String getPasswordLabelError() {
-        return passwordErrorLabel.getText();
+    public boolean isPasswordLabelEightCharError() {
+        final Label passwordLabelEightCharError = new Label(By.xpath("//span[text()='Minimum 8 characters']"));
+        return passwordLabelEightCharError.isElementPresent();
     }
 
     public void clickRegisterBtn() {
         registerBtn.click();
+    }
+
+    public boolean isEmailOrPasswordIsNotValid() {
+        final Label emailOrPasswordIsNotValid = new Label(By.xpath("//span[text()='Email or password is not valid']"));
+        return emailOrPasswordIsNotValid.isElementPresent();
     }
 
 }

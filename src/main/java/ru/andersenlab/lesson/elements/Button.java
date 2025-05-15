@@ -20,4 +20,8 @@ public class Button extends BaseElement {
     public void contextClick() {
         actions.contextClick(getElement()).build().perform();
     }
+
+    public void moveToElementClick() {
+        actions.moveToElement(getElement(), 0, 20).click().perform();
+    }
 }

@@ -45,7 +45,7 @@ public class RegisterPage extends BaseForm {
     }
 
     public void clickSubmitBtn() {
-        submitBtn.click();
+        submitBtn.moveToElementClick();
     }
 
     public String getErrorEmailField() {

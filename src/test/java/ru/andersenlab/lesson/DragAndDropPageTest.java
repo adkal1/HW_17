@@ -1,6 +1,11 @@
 package ru.andersenlab.lesson;
 
-import io.qameta.allure.*;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Severity;
+import io.qameta.allure.Story;
+import io.qameta.allure.TmsLink;
+import io.qameta.allure.SeverityLevel;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -17,7 +22,6 @@ public class DragAndDropPageTest extends BaseTest {
         signInPage.clickSubmitBtn();
 
         ProfilePage profilePage = new ProfilePage();
-        profilePage.clickAqaPracticeBtn();
         profilePage.clickDragDropBtn();
 
         DragAndDropPage dragAndDropPage = new DragAndDropPage();

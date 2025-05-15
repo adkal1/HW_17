@@ -13,12 +13,10 @@
   "alertCancelCourse": "Here you may describe a reason why you are cancelling your registration (or leave this field empty).",
   "resultCancelCourse": "Your course application has been cancelled. Reason: ",
   "textToAlertCancelCourse": "Test",
-  "title": "QA Course",
-  "passwordLessEight": "Minimum 8 characters",
-  "emailInvalid": "Invaid email address",
+  "title": "QA Course 01",
   "firstName": "John",
   "lastName": "Klasq",
   "dateOfBirth": "11.12.1999",
-  "email": "johnq@mail121.io",
+  "email": "johnq@mail1sa1.io",
   "password": "12345678"
 }

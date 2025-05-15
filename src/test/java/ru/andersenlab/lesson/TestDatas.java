@@ -16,8 +16,6 @@ public class TestDatas {
     public String resultCancelCourse;
     public String textToAlertCancelCourse;
     public String title;
-    public String passwordLessEight;
-    public String emailInvalid;
     public String firstName;
     public String lastName;
     public String dateOfBirth;

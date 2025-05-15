@@ -11,21 +11,24 @@ public class ProfilePage extends BaseForm {
         super(By.xpath("//div[contains(text(), 'Sign Out')]"));
     }
 
-    public void clickAqaPracticeBtn() {
+    private void clickAqaPracticeBtn() {
         aqaPracticeBtn.click();
     }
 
     public void clickDragDropBtn() {
+        clickAqaPracticeBtn();
         final Button dragDropBtn = new Button(By.xpath("//div[text()='Drag & Drop']"));
         dragDropBtn.click();
     }
 
     public void clickSelectBtn() {
+        clickAqaPracticeBtn();
         final Button selectBtn = new Button(By.xpath("//div[text()='Select']"));
         selectBtn.click();
     }
 
     public void clickAlertsAndIframesBtn() {
+        clickAqaPracticeBtn();
         final Button selectBtn = new Button(By.xpath("//div[text()='Actions, Alerts & Iframes']"));
         selectBtn.click();
     }

@@ -26,4 +26,8 @@ public abstract class BaseElement {
     public boolean isElementPresent() {
         return WaitUtils.waitForElementPresence(uniqueLocator);
     }
+
+    public By getLocator() {
+        return uniqueLocator;
+    }
 }

@@ -15,6 +15,7 @@ public class DateUtils {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
         return today.format(formatter);
     }
+
     public static String getDateInTwoWeeks() {
         LocalDate today = LocalDate.now();
         LocalDate twoWeeksLater = today.plusWeeks(2);

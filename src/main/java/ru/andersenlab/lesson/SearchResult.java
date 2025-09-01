@@ -1,13 +1,17 @@
 package ru.andersenlab.lesson;
 
 import org.openqa.selenium.By;
+import ru.andersenlab.lesson.baseclasses.BaseForm;
+import ru.andersenlab.lesson.elements.Label;
 
-import static ru.andersenlab.lesson.utilits.WaitUtils.*;
+public class SearchResult extends BaseForm {
+    private final Label resultText = new Label(By.xpath("//h2"));
 
-public class SearchResult {
-    private static final By resultText = By.xpath("//h2");
+    public SearchResult() {
+        super(By.xpath("//h1[contains(text(), 'Search results')]"));
+    }
 
     public String getResultText() {
-        return waitForVisibility(resultText).getText();
+        return resultText.getText();
     }
 }

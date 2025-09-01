@@ -2,43 +2,46 @@ package ru.andersenlab.lesson;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
+import ru.andersenlab.lesson.baseclasses.BaseForm;
+import ru.andersenlab.lesson.elements.Button;
+import ru.andersenlab.lesson.elements.Label;
 
 import static ru.andersenlab.lesson.utilits.Driver.getDriver;
-import static ru.andersenlab.lesson.utilits.WaitUtils.*;
 
-public class AlertsAndIframesPage {
+public class AlertsAndIframesPage extends BaseForm {
 
-    private static final WebElement iFrame = getDriver().findElement(By.xpath("//iframe[@title='Finish your registration']"));
-    private Actions actions = new Actions(getDriver());
+    private static final WebElement I_FRAME = getDriver().findElement(By.xpath("//iframe[@title='Finish your registration']"));
+
+    public AlertsAndIframesPage() {
+        super(By.xpath("//iframe[@title='Finish your registration']"));
+    }
 
     public void clickConfirmBtn() {
-        final By confirmBtn = By.xpath("//button[@id='AlertButton']");
-        waitForClickable(confirmBtn).click();
+        final Button confirmBtn = new Button(By.xpath("//button[@id='AlertButton']"));
+        confirmBtn.click();
     }
 
     public void clickGetDiscountBtn() {
-        final By getDiscountBtn = By.xpath("//button[text()='Get Discount']");
-        actions.doubleClick(waitForClickable(getDiscountBtn)).build().perform();
+        final Button getDiscountBtn = new Button(By.xpath("//button[text()='Get Discount']"));
+        getDiscountBtn.doubleClick();
     }
 
     public void clickCancelCourseBtn() {
-        final By cancelCourseBtn = By.xpath("//button[text()='Cancel course']");
-        actions.contextClick(waitForClickable(cancelCourseBtn)).build().perform();
+        final Button cancelCourseBtn = new Button(By.xpath("//button[text()='Cancel course']"));
+        cancelCourseBtn.contextClick();
     }
 
     public String getResult() {
-        final By confirmResult = By.xpath("//span[@class='font-light flex']");
-        return waitForVisibility(confirmResult).getText();
+        final Label confirmResult = new Label(By.xpath("//span[@class='font-light flex']"));
+        return confirmResult.getText();
     }
 
     public void switchToIframe() {
-        getDriver().switchTo().frame(iFrame);
+        getDriver().switchTo().frame(I_FRAME);
     }
 
     public void switchOutIframe() {
         getDriver().switchTo().defaultContent();
-
     }
 
 }

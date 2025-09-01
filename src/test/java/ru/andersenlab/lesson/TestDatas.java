@@ -15,4 +15,10 @@ public class TestDatas {
     public String alertCancelCourse;
     public String resultCancelCourse;
     public String textToAlertCancelCourse;
+    public String title;
+    public String firstName;
+    public String lastName;
+    public String dateOfBirth;
+    public String email;
+    public String password;
 }
